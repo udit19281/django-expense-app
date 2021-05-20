@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 <meta name="theme-color" content="#7952b3">
     <!-- Custom styles for this template -->
-    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
   </head>
   <body>
     
@@ -23,7 +23,11 @@
       <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">Login</a>
+          <form method="post" action="{% url 'auth:logout' %}">
+            {% csrf_token %}
+           <button class="btn btn-sm btn-dark" type="submit">Logout</button>
+          </form>
+          <!-- <a class="nav-link" href="">Logout</a> -->
         </li>
       </ul>
     </header>
@@ -36,6 +40,13 @@
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">{% block title %}Dashboard{% endblock title %}</h1>
           </div>
+          {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="alert alert-sm alert-{{ message.tags }}" {% endif %}>{{ message }}</li>
+              {% endfor %}
+          </ul>
+          {% endif %}
             {% block content %}
             
             {% endblock content %}

@@ -17,27 +17,71 @@
 
 <body>
 
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-      <div class="card mt-5">
+  <main class="main-container">
+    <div class="container-fluid">
+      <div class="row">
+        
+      </div>
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="alert alert-sm alert-{{ message.tags }}" {% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
 
-        <div class="card-body">
-          <div class="card-title py-3">
-            <h5>Signup for a new account</h5>
-          </div>
-          {% if messages %}
-          <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="alert alert-sm alert-{{ message.tags }}" {% endif %}>{{ message }}</li>
-              {% endfor %}
-          </ul>
-          {% endif %}
-          <form action="{% url 'auth:signup' %}" method="post">
+      <div class="bg-box">
+        <div class="bg1"></div>
+        <div class="bg2"></div>
+      </div>
+      <form class="form" method="post" action="{% url 'auth:signup' %}">
+        {% csrf_token %}
+        <label for="username">Username</label>
+        <div class="input-box">
+          <ion-icon class="prefix" name="person-outline"></ion-icon>
+          <input id="usernamef" type="text" name="username" spellcheck="false" />
+          <label class="invalid-feedback" style="display:none" id="usernamefeedbackarea"></label>
+        </div>
+        <label for="email">Email</label>
+        <div class="input-box">
+          <ion-icon class="prefix" name="person-outline"></ion-icon>
+          <input id="emailf" type="email" name="email" spellcheck="false" />
+          <div class="invalid-feedback" style="display:none" id="emailfeedbackarea"></div>
+        </div>
+        <label for="password">Password</label>
+        <div class="input-box">
+          <ion-icon class="prefix" name="lock-closed-outline"></ion-icon>
+          <input id="passwordf" name="password" type="password" spellcheck="false" />
+          <small class="float-right mr-auto" id="show">Show</small>
+          <ion-icon class="switch-btn" name="eye-off-outline"></ion-icon>
+        </div>
+        <button class="send-btn">Signup
+          <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+        </button>
+        <div class="mt-2">
+          Have an Account?<a href="{%url 'auth:login' %}"> Login</a>
+        </form>
+      </div>
+    </div>
+  </main>
+  <script src="{% static 'js/min.js' %}"></script>
+  <script src="{% static 'js/vali-email.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+    integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
+    crossorigin="anonymous"></script>
+  <script src="{% static 'js/index.js' %}"></script>
+</body>
+
+</html>
+
+          <!-- commendes -->
+          <!-- <form action="{% url 'auth:signup' %}" method="post">
             {% csrf_token %}
             <div class="form-group">
               <input type="username" class="form-control mt-3 form-control-lg" placeholder="username" id="usernamef" name="username" value="{{fieldvalue.username}}">
             </div>
+            <div class="invalid-feedback" style="display:none" id="usernamefeedbackarea"></div>
             <div class="form-group">
               <input type="email" class="form-control mt-3 form-control-lg" placeholder="email" id="emailf" name="email" value="{{fieldvalue.email}}">
             </div>
@@ -50,18 +94,6 @@
 
             <button class="btn btn-block btn-primary mt-3">Submit</button>
           </form>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4"></div>
-  </div>
-  <script src="{% static 'js/min.js' %}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
-    integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
-    </script>
-  <script src="{% static 'js/index.js' %}"></script>
-  <script src="{% static 'js/vali-email.js' %}"></script>
-</body>
-
-</html>
+          <div class="mt-2">
+           Have an Account?<a href="{%url 'auth:login' %}"> Login</a>
+          </div> -->
