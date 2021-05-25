@@ -5,4 +5,8 @@ app_name='expenses'
 
 urlpatterns = [
     path('',views.index, name='home'),
+    path('expenses/',views.expenses, name='expenses'),
+    path('expenses/add/',views.expensesadd, name='add'),
+    path('expenses/edit/<int:id>',views.expensesedit, name='edit'),
+    path('settings/',views.settings, name='settings')
 ]

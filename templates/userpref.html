@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+{% block title %}User Preferences{% endblock title %}
+{% block content %}
+<div class="container mt-5">
+<form method="post" action="{% url 'expenses:settings' %}">
+    {% csrf_token %}
+<select class="form-select form-select-lg mb-3 mt-5" name='currency'>
+    <option selected>{{prev}}</option>
+   {% for i in curr %}
+    <option value="{{i.value}}">{{i.value}}</option>
+   {% endfor %}
+</select>
+<input type="submit" class="btn btn-primary" />
+</div>
+</form>
+{% endblock %}
