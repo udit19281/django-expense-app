@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 import json
 from django.views.generic import View
-from expenses.models import Userm as User
+from expenses.models import User
 from django.http import JsonResponse
 from validate_email import validate_email
 from django.contrib import auth, messages

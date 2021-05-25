@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+{% block title %}Add New Expenses{% endblock title %}
+{% block content %}
+  <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
+  <h2></h2>
+
+  <form class="form" method="post" action="{% url 'expenses:add' %}">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label class="form-label" >Amount</label>
+        <input class="form-control" type="text" name="amount"/>
+    </div>  
+    
+    <div class="mb-3">
+        <label class="form-label">Category</label>
+        <select class="form-select form-select-md" name='category'>
+           {% for i in category %}
+            <option value="{{i.name}}">{{i.name}}</option>
+           {% endfor %}
+        </select>
+    </div>  
+    <div class="mb-3">
+        <label class="form-label" >Date</label>
+        <input class="form-control" type="date" name="date"/>
+    </div>  
+    <div class="mb-3">
+        <label class="form-label" >Description</label>
+        <input class="form-control" type="text" name="description"/>
+    </div>  
+      <input type="submit" class="btn btn-primary" />
+
+  </form>
+  
+
+{% endblock %}
