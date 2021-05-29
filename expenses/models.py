@@ -3,11 +3,6 @@ from django.contrib.auth.models import AbstractUser
 import datetime
 # Create your models here.
 
-available_cur=[
-    ('INR','INR'),
-    ('USD', 'USD'),
-    ('EUR', 'EUR'),
-]
 
 class User(AbstractUser):
     pass
