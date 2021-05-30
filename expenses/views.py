@@ -6,6 +6,7 @@ from django.conf import settings as s
 import json
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.http import JsonResponse
 # Create your views here.
 
 def index(request):
@@ -107,3 +108,33 @@ def expensesdelete(request,id):
     ele.delete()
     messages.success(request,"Deleted Successfull")
     return redirect('expenses:expenses')
+
+def stat(request):
+    return render(request,'stats.html')
+
+def getcat(exp):
+    return exp.category
+    
+
+def stat_api(request):
+    now=datetime.datetime.today()
+    year=now-datetime.timedelta(days=30*12)
+    exp=Expenses.objects.filter(owner=request.user,date__gte=year,date__lte=now)
+    final={}
+    all_cat=[]
+    f=Category.objects.all()
+    for i in f:
+        all_cat.append(i.name)
+        
+    def get_amt(cat):
+        ans=0
+        expd=exp.filter(category=cat)
+        for i in expd:
+            ans+=int(i.amount)
+        return ans
+
+    for y in all_cat:
+        final[y]=get_amt(y)
+
+    return JsonResponse({'exp_result':final},safe=False)
+

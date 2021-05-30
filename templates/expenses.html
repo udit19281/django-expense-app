@@ -1,25 +1,27 @@
 {% extends 'main.html' %}
+{% load static %}
 {% block title %}Expenses Section{% endblock title %}
 {% block content %}
+
   <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
 
   <a href="{% url 'expenses:add' %}"><button type="submit" class="btn btn-primary btn-sm mt-1 mb-1" >Add Expenses</button></a>
   <div class="table-responsive mt-3">
-    <table class="table table-striped table-sm">
-      <thead>
+    <table class="table table-lg table-borderless table-hover">
+      <thead class="thead-dark">
         <tr>
-          <th>Number</th>
-          <th>Amount ({{pref.currency|slice:"0:3"}}) </th>
-          <th>Description</th>
-          <th>Category</th>
-          <th>Date</th>
-          <th></th>
+          <th scope="col">Number</th>
+          <th scope="col"> Amount ({{pref.currency|slice:"0:3"}}) </th>
+          <th scope="col">Description</th>
+          <th scope="col">Category</th>
+          <th scope="col">Date</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         {% for i in page_obj %}
         <tr>
-          <td>{{ forloop.counter }}</td>
+          <td scope="row">{{ forloop.counter }}</td>
           <td>{{i.amount}}</td>
           <td>{{i.description}}</td>
           <td>{{i.category}}</td>
@@ -51,4 +53,7 @@
 
       </ul>
 
+      <canvas id="myChart"></canvas>
+ 
+      <script src="{% static 'js/stats.js' %}"> </script>
 {% endblock %}
