@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block title %}Dashboard{% endblock title %}
+{% block content %}
+<div class="container">
+
+{% if user.is_authenticated %}
+          <form method="post" action="{% url 'auth:logout' %}">
+            {% csrf_token %}
+           <button class="btn btn-sm btn-danger" type="submit">Logout</button>
+          </form>
+{% else %}
+          <a class="btn btn-sm btn-success" href="{% url 'auth:login' %}">Login</a>
+{% endif %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">About the project</h1>
+  </div>
+  <ul>
+    <li>
+      Here, You can manage your income and expenses 
+    </li>
+    <li>
+      This
+    </li>
+  </ul>
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Features</h1>
+  </div>
+  <ul>
+    <li>
+      Authentication
+    </li>
+    <li>
+      Intreactive charts for visualosong data
+    </li>
+    <li>
+      Edit or delete any field
+    </li>
+  </ul>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Technologies Used</h1>
+</div>
+<ul>
+  <li>
+    Here, You can manage your income and expenses 
+  </li>
+  <li>
+    This
+  </li>
+</ul>
+</div>
+{% endblock content %}

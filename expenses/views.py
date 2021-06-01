@@ -9,13 +9,18 @@ from django.core.paginator import Paginator
 from django.http import JsonResponse
 # Create your views here.
 
-def index(request):
-    return render(request,'index.html')
+
+def dahboard(request):
+    return render(request,'dashboard.html')
 
 @login_required(login_url='/auth/login/')
 def expenses(request):
     data=Expenses.objects.filter(owner=request.user)
-    pref=Userpref.objects.get(username=request.user)
+    try:
+        pref=Userpref.objects.get(username=request.user)
+    except:
+        pref=" "
+
     paginator = Paginator(data, 5)
     page_number = request.GET.get('page')
     page_obj=paginator.get_page(page_number)

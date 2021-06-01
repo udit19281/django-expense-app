@@ -128,4 +128,4 @@ class Logout(View):
     def post(self,request):
         auth.logout(request)
         messages.success(request,"You have been logged out")
-        return redirect('auth:login')
+        return redirect('expenses:home')

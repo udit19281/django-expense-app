@@ -1,19 +1,19 @@
 {% extends 'main.html' %}
 {% load static %}
-{% block title %}Expenses Section{% endblock title %}
+{% block title %}Income Section{% endblock title %}
 {% block content %}
 
   <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
 
-  <a href="{% url 'expenses:add' %}"><button type="submit" class="btn btn-success btn-sm mt-1 mb-1" >Add Expenses</button></a>
+  <a href="{% url 'income:add' %}"><button type="submit" class="btn btn-success btn-sm mt-1 mb-1" >Add income</button></a>
   <div class="table-responsive mt-3">
     <table class="table table-lg table-borderless table-hover">
       <thead class="thead-dark">
         <tr>
           <th scope="col">Number</th>
-          <th scope="col"> Amount ({{pref.currency|slice:"0:3"}}) </th>
+          <th scope="col">Amount ({{pref.currency|slice:"0:3"}}) </th>
           <th scope="col">Description</th>
-          <th scope="col">Category</th>
+          <th scope="col">Source</th>
           <th scope="col">Date</th>
           <th scope="col"></th>
         </tr>
@@ -24,10 +24,10 @@
           <td scope="row">{{ forloop.counter }}</td>
           <td>{{i.amount}}</td>
           <td>{{i.description}}</td>
-          <td>{{i.category}}</td>
+          <td>{{i.source}}</td>
           <td>{{i.date}}</td>
-          <td><a href="{% url 'expenses:edit' i.pk %}" class="btn btn-sm btn-outline-success">Edit</a>
-          <a href="{% url 'expenses:delete' i.pk %}" class="btn btn-sm btn-outline-danger">Delete</a></td>
+          <td><a href="{% url 'income:edit' i.pk %}" class="btn btn-sm btn-outline-success">Edit</a>
+          <a href="{% url 'income:delete' i.pk %}" class="btn btn-sm btn-outline-danger">Delete</a></td>
         </tr>
         {% endfor %}
         </tr>
@@ -57,5 +57,5 @@
       </div>
    
  
-      <script src="{% static 'js/stats.js' %}"> </script>
+      <script src="{% static 'js/incomestats.js' %}"> </script>
 {% endblock %}
