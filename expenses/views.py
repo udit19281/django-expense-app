@@ -4,9 +4,12 @@ from django.contrib.auth.decorators import login_required
 import os
 from django.conf import settings as s
 import json
+from expenses.models import Userpref
 from django.contrib import messages
 from django.core.paginator import Paginator
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
+import datetime
+import csv
 # Create your views here.
 
 
@@ -143,3 +146,14 @@ def stat_api(request):
 
     return JsonResponse({'exp_result':final},safe=False)
 
+@login_required(login_url='/auth/login/')
+def exportdata(request):
+    data=Expenses.objects.filter(owner=request.user)
+    res=HttpResponse(content_type='text/csv')
+    res['Content-Disposition']='attachment; filename=Expense_Data'+str(datetime.datetime.now())+'.csv'
+    writer=csv.writer(res)
+    writer.writerow(['Amount','Category','Date','Description'])
+
+    for i in data:
+        writer.writerow([i.amount,i.category,i.date,i.description])
+    return res

@@ -164,7 +164,6 @@ body {
           animation: fadeinBottom 1s both;
 }
 .bg-box .bg2 {
-   background-image: url(https://i.pinimg.com/564x/05/b7/e1/05b7e1f153819d3424df491219cd3928.jpg); 
   background-position: right center;
   background-size: 70% auto;
   -webkit-animation: fadeinTop 1s 0.3s both;

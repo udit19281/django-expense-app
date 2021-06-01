@@ -11,4 +11,5 @@ urlpatterns = [
     path('delete/<int:id>',views.incomedelete, name='delete'),
     path('stat/',views.stat, name='stat'),
     path('statapi/',views.stat_api, name='statapi'),
+    path('data/',views.exportdata, name='export'),
 ]

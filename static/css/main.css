@@ -107,3 +107,10 @@ body {
     color:rgb(0, 179, 255);
     font-size: 1.5rem;
   }
+
+.footer {
+  position:fixed;bottom:0;
+  text-align: center;
+  width:100%;
+  display:block;
+}

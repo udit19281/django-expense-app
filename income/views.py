@@ -7,7 +7,8 @@ from django.conf import settings as s
 import json
 from django.contrib import messages
 from django.core.paginator import Paginator
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
+import csv
 # Create your views here.
 
 @login_required(login_url='/auth/login/')
@@ -105,3 +106,14 @@ def stat_api(request):
 
     return JsonResponse({'inc_result':final},safe=False)
 
+@login_required(login_url='/auth/login/')
+def exportdata(request):
+    data=Income.objects.filter(owner=request.user)
+    res=HttpResponse(content_type='text/csv')
+    res['Content-Disposition']='attachment; filename=Income_Data'+str(datetime.datetime.now())+'.csv'
+    writer=csv.writer(res)
+    writer.writerow(['Amount','Source','Date','Description'])
+
+    for i in data:
+        writer.writerow([i.amount,i.source,i.date,i.description])
+    return res

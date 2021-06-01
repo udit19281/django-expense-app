@@ -7,10 +7,11 @@
 {% if user.is_authenticated %}
           <form method="post" action="{% url 'auth:logout' %}">
             {% csrf_token %}
-           <button class="btn btn-sm btn-danger" type="submit">Logout</button>
+           <button class="btn btn-md btn-danger" type="submit">Logout</button>
           </form>
+          
 {% else %}
-          <a class="btn btn-sm btn-success" href="{% url 'auth:login' %}">Login</a>
+          <a class="btn btn-md btn-success" href="{% url 'auth:login' %}">Login</a>
 {% endif %}
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -18,24 +19,27 @@
   </div>
   <ul>
     <li>
-      Here, You can manage your income and expenses 
+      Manage your incomes and expenditures.
     </li>
     <li>
-      This
+      Perform CRUD operations.
+    </li>
+    <li>
+      Set your preferred currency in settings.
     </li>
   </ul>
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Features</h1>
+    <h1 class="h2">More Features</h1>
   </div>
   <ul>
     <li>
-      Authentication
+      User Authentication by email.
     </li>
     <li>
-      Intreactive charts for visualosong data
+      Intreactive charts for data Visualisation.
     </li>
     <li>
-      Edit or delete any field
+      Export data in csv format.
     </li>
   </ul>
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -43,10 +47,15 @@
 </div>
 <ul>
   <li>
-    Here, You can manage your income and expenses 
+    Django in backend.
   </li>
   <li>
-    This
+    Bootstrap, javascript in frontend.
+  </li>
+  <li>
+    Postgresql for database.
+  </li> <li>
+    Custom API for data retrival.
   </li>
 </ul>
 </div>

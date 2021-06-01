@@ -48,16 +48,22 @@
           {% if messages %}
           <ul class="messages">
             {% for message in messages %}
-            <li{% if message.tags %} class="alert alert-sm alert-{{ message.tags }}" {% endif %}>{{ message }}</li>
+            <li{% if message.tags %} class="alert alert-lg alert-{{ message.tags }}" {% endif %}>{{ message }}</li>
               {% endfor %}
           </ul>
           {% endif %}
             {% block content %}
             
             {% endblock content %}
-            </main>
       </div>
+      <div class="footer mb-3">
+        <footer> &copy; Copyright <a href="https://portfolio-udit.herokuapp.com/">Udit Bhati</a> 2021</footer>
+       </div>
+      </main>
+      
     </div>
+
+    
 
   <script src="{% static 'js/min.js' %}"></script>
 </body>

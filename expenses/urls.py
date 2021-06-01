@@ -12,4 +12,5 @@ urlpatterns = [
     path('settings/',views.settings, name='settings'),
     path('stat/',views.stat, name='stat'),
     path('expenses/statapi/',views.stat_api, name='statapi'),
+    path('data/',views.exportdata, name='export'),
 ]
