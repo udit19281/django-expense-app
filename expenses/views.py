@@ -43,7 +43,7 @@ def settings(request):
     if request.method=="GET":
         try:
             sett=Userpref.objects.get(username=user)
-            print(sett)
+            # print(sett)
             context={
                 'prev':sett.currency,
                 'curr':curr
