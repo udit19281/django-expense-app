@@ -80,7 +80,7 @@ def expensesadd(request):
         # print(amount, category, date, description)
         ent=Expenses.objects.create(owner=user, amount=amount, category=category, date=date, description=description)
         ent.save()
-        messages.success(request,"New record added successfully")
+        messages.success(request,"New Record Added Successfully")
         return redirect('expenses:expenses')
     category=Category.objects.all()
     context={
@@ -107,14 +107,14 @@ def expensesedit(request,id):
         ele.date=request.POST['date']
         ele.description=request.POST['description']
         ele.save()
-        messages.success(request,"Editted successfully")
+        messages.success(request,"Editted Successfully")
         return redirect('expenses:expenses')
 
 @login_required(login_url='/auth/login/')
 def expensesdelete(request,id):
     ele=Expenses.objects.get(id=id)
     ele.delete()
-    messages.success(request,"Deleted Successfull")
+    messages.success(request,"Deleted Successfully")
     return redirect('expenses:expenses')
 
 def stat(request):

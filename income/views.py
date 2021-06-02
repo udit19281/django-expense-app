@@ -37,7 +37,7 @@ def incomeadd(request):
         # print(amount, source, date, description)
         ent=Income.objects.create(owner=user, amount=amount, source=source, date=date, description=description)
         ent.save()
-        messages.success(request,"New record added successfully")
+        messages.success(request,"New Record Added Successfully")
         return redirect('income:income')
     source=Source.objects.all()
     context={
@@ -64,14 +64,14 @@ def incomeedit(request,id):
         ele.date=request.POST['date']
         ele.description=request.POST['description']
         ele.save()
-        messages.success(request,"Editted successfully")
+        messages.success(request,"Editted Successfully")
         return redirect('income:income')
 
 @login_required(login_url='/auth/login/')
 def incomedelete(request,id):
     ele=Income.objects.get(id=id)
     ele.delete()
-    messages.success(request,"Deleted Successfull")
+    messages.success(request,"Deleted Successfully")
     return redirect('income:income')
 
 def stat(request):
