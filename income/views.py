@@ -34,7 +34,7 @@ def incomeadd(request):
         date=request.POST['date']
         description=request.POST['description']
         user=User.objects.get(username=user)
-        print(amount, source, date, description)
+        # print(amount, source, date, description)
         ent=Income.objects.create(owner=user, amount=amount, source=source, date=date, description=description)
         ent.save()
         messages.success(request,"New record added successfully")

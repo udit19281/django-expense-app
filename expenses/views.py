@@ -65,7 +65,7 @@ def settings(request):
         sett.currency=val
         sett.save()
         messages.success(request,"Setting saved successfully")
-        return render(request,'index.html')
+        return render(request,'dashboard.html')
 
 
 @login_required(login_url='/auth/login/')
@@ -77,7 +77,7 @@ def expensesadd(request):
         date=request.POST['date']
         description=request.POST['description']
         user=User.objects.get(username=user)
-        print(amount, category, date, description)
+        # print(amount, category, date, description)
         ent=Expenses.objects.create(owner=user, amount=amount, category=category, date=date, description=description)
         ent.save()
         messages.success(request,"New record added successfully")
